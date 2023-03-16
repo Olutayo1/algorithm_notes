@@ -1,0 +1,117 @@
+>>>>>>>>>>>>>>>>>>>>>>RECURSION
+what? Recursion is a problem solving technique where the solution depends on solutions to smaller instances of the same problem.
+
+if we want to get abit more technical we can say Recursion is when a function calls itself.
+
+why do we need this technique?
+1)it is a great technique to simplify your solution.
+if you find yourself breaking down your problem into smaller versions of the same problem, recursion is very useful.
+
+analogy: you go to your local school and askyour principal how many number of student are in his school
+then is said the number of student will be determined by how many student is thought by professor A and Professor B
+in the same way if the professor A is ask how many students do they have the can say that will be determined by Teacher A and Teacher B. professor B then say his own will be determined by Teacher C and Teacher D
+this is the lowest level by which the problem can be broken down
+
+                       PRINCIPAL
+                       200
+
+         PROFESSOR A              PROFESSOR B
+              100                     100
+
+  TEACHER A    TEACHER B         TEACHER C    TEACHER D
+  50            50                  55            45
+
+  the teacher report back to the professors and the professors report back to the principal. the problem is always finding the number of students in each level the problem is smaller.
+
+  FEW POINTS :
+  1) every recursive solution needs to have a base case - which is nothing but a condition that terminates the recursion. without a base case we will have an infinite loop that will crash the program.
+
+  2)a recursion might simplfy solving the problem but it might not translate to a faster solution. a recursive solution might be far worse than and iterative solution. 
+  3) Recursion is a topic that is not the most straight forward to understand. Do not give up if you struggle with the concept.
+
+  now lets solve the fibonacci with recursive
+
+problem question: Given the number 'n', find the nth element of the fibonacci sequence.
+
+in mathematics, the fibonacci sequence is a sequence in which each number is the sum of the two preceding ones
+EG
+The first two numbers in the sequence are 0 and 1. (0, 1, 1, 2, 3, 5,8...)
+
+recursiveFibonacci(0) = 0
+recursiveFibonacci(1) = 1
+recursiveFibonacci(6) = 8
+
+Rather than the entire sequence we are only interested in the number present at a certain position in the sequence.
+
+Tips for recursive solutions
+1.figure out how to break down the problem into smaller versions of the same problem.
+2. identify the base case for recursion
+
+we know The Fibonacci sequence is a sequence in which each number is the sum of the two preceeding ones.
+
+if F represents a function to calculate the Fibonacci number, then
+Fn = Fn-1 + Fn-2
+As the number is the sum of the previous two numbers.
+
+we still have to calculate the fibonacci number this time smaller number
+
+ the loop wont stop if only you have a base case 
+ what is our base case.
+ F0 = 0 and F1 = 1
+
+ what is F2? F2 = F1 + F0
+ what is F1? F1 = F1 + F0 = 1
+
+
+ F2 = F1 + F0
+ F2 = 1 + 0
+ F2 = 1
+
+ this is the approach of solving recursion
+
+lets begin by defining the function signature
+it will have 0ne parameter (n) which the element position in the fibonacci sequence.
+
+function recursiveFibonacci(n) {
+
+}
+
+console.log(recursiveFibonacci(0)) // 0
+console.log(recursiveFibonacci(1))//  1
+console.log(recursiveFibonacci(6))//  8
+
+know tha n starts from 0 and not 1
+
+what do we know about our recursion 
+we know Fn = Fn-1 + Fn-2
+
+function recursiveFibonacci(n) {
+  return recursiveFibonacci(n-1) + recursiveFibonacci(n-2)
+  
+}
+
+
+return recursiveFibonacci(n-1) + recursiveFibonacci(n-2) //this is an unending loop we have to put in our base case
+ F0 = 0 and F1 = 1
+
+( we can start the function with the base case
+if (n < 2) {
+  return n
+}
+this will return 0 if n = 0 and return 1 if n = 1 )
+this complete our recursiveFibonacci code
+
+function recursiveFibonacci(n) {
+  if (n < 2) {
+  return n
+}
+return recursiveFibonacci(n-1) + recursiveFibonacci(n-2) 
+}
+
+console.log(recursiveFibonacci(0)) // 0
+console.log(recursiveFibonacci(1))//  1
+console.log(recursiveFibonacci(6))//  8
+
+the time complexity for recursive is two power n
+O(2^n)
+you can see the perform is really terrible compared to big O(n)
